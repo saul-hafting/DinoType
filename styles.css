@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --bgColour: #5f5e5e;
+    --textMain: #e0d91f;
+    --textSecondary: #908e8e;
+    --buttonBg: #3a3939;
+    --buttonActive: #ffff00;
+}
+
+body {
+    background-color: var(--bgColour);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+h1 {
+    color: var(--textMain);
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-left: 100px;
+}
+
+h1 button {
+    margin-left: 15px; 
+    background-color: var(--buttonBg);
+    color: var(--textMain);
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+h1 button:focus {
+    outline: none;
+}
+
+h1 button:hover {
+    background-color: var(--buttonActive);
+    color: var(--buttonBg);
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#gameBox {
+    color: var(--textSecondary);
+    font-family: "Roboto Mono", monospace;
+    font-size: 25px;
+    width: 800px;
+}
+
+div.word {
+    display: inline-block;
+}
+
+.cursor {
+    background-color: orange;
+    height: 17px;
+    width: 3px;
+    display: inline-block;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.letter.current::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--textMain);
+    animation: blink 0.7s infinite;
+}
+
+.letter, .space {
+    position: relative;
+    display: inline-block;
+}
+
+.space {
+    display: inline-block;
+    width: 1ch;
+}
+
+.letter.correct {
+    color: white;
+}
+
+.letter.incorrect, .badSpace {
+    color: red;
+}
+
+#resultsDiv {
+    color: var(--textMain); /* Use main text color */
+    font-family: "Roboto Mono", monospace; /* Monospace font for results */
+    font-size: 18px; /* Slightly larger font size */
+    padding: 20px; /* Padding around the results */
+    border-radius: 10px; /* Rounded corners */
+    margin-top: 20px; /* Space above the results section */
+    width: 80%; /* Width of the results box */
+    max-width: 600px; /* Maximum width */
+    text-align: center; /* Center text alignment */
+}
+
+#resultsDiv h2 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+#resultsDiv p {
+    margin: 20px 0; /* Space between paragraphs */
+}
+
+#resultsDiv button {
+    background-color: var(--buttonBg);
+    color: var(--textMain);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+#resultsDiv button:hover {
+    background-color: var(--buttonActive);
+    color: var(--buttonBg);
+}
+
+#progress {
+    color: var(--textSecondary);
+    font-family: "Roboto Mono", monospace;
+    position: relative;
+    right: 180px;
+}
